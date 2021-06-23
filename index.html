@@ -652,6 +652,9 @@
       const parentCardContianer = document.getElementById(
         "parent-card-container"
       );
+      const hideImage = () => {
+        const closestCardParent = document;
+      };
       const displayImage = (photos) => {
         parentCardContianer.innerHTML = "";
         photos.forEach((photo) => {
@@ -676,11 +679,12 @@
                       <button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
+                        onclick="hideImage(event)"
                       >
                         Hide
                       </button>
                     </div>
-                    <small class="text-muted">9 mins</small>
+                    <small class="text-muted">${photo.id}</small>
                   </div>
                 </div>
 </div></div>`;
