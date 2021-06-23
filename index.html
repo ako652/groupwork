@@ -652,8 +652,8 @@
       const parentCardContianer = document.getElementById(
         "parent-card-container"
       );
-      const hideImage = () => {
-        const closestCardParent = document;
+      const hideImage = (e) => {
+        e.target.closest(".col-md-4").remove();
       };
       const displayImage = (photos) => {
         parentCardContianer.innerHTML = "";
