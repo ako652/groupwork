@@ -678,8 +678,8 @@
       const parentCardContianer = document.getElementById(
         "parent-card-container"
       );
+      const searchInput = document.getElementById("search-input");
       const loadFromQuery = () => {
-        const searchInput = document.getElementById("search-input");
         console.log(searchInput.value);
         fetch("https://api.pexels.com/v1/search?query=" + searchInput.value, {
           method: "GET",
@@ -753,7 +753,13 @@
           });
       };
       const loadImageSecondary = () => {
-        fetch("https://api.pexels.com/v1/search?query=car", {
+        let searchQuery = "";
+        if (searchInput.value !== "") {
+          searchQuery = searchInput.value;
+        } else {
+          searchQuery = "car";
+        }
+        fetch("https://api.pexels.com/v1/search?query=" + searchQuery, {
           method: "GET",
           headers: {
             Authorization:
