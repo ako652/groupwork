@@ -57,7 +57,7 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Jekyll v3.8.5" />
-    <title>Album example · Bootstrap</title>
+    <title>Album example · Bootstrapp</title>
 
     <link
       rel="canonical"
@@ -652,8 +652,8 @@
       const parentCardContianer = document.getElementById(
         "parent-card-container"
       );
-      const hideImage = () => {
-        const closestCardParent = document;
+      const hideImage = (e) => {
+        e.target.closest(".col-md-4").remove();
       };
       const displayImage = (photos) => {
         parentCardContianer.innerHTML = "";
