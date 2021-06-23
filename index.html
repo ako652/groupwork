@@ -195,8 +195,18 @@
             them in a cool way!
           </p>
           <p>
-            <a href="#" class="btn btn-primary my-2">Load Images</a>
-            <a href="#" class="btn btn-secondary my-2" onclick="loadImage()">
+            <a
+              href="#"
+              class="btn btn-primary my-2"
+              onclick="loadImagePrimary()"
+            >
+              Load Images
+            </a>
+            <a
+              href="#"
+              class="btn btn-secondary my-2"
+              onclick="loadImageSecondary()"
+            >
               Load Secondary Images
             </a>
           </p>
@@ -690,7 +700,24 @@
 </div></div>`;
         });
       };
-      const loadImage = () => {
+      const loadImagePrimary = () => {
+        fetch("https://api.pexels.com/v1/search?query=cat", {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Bearer 563492ad6f91700001000001af31c8368f96413ab0f9ab1fb349c3b5",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data.photos);
+            displayImage(data.photos);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+      const loadImageSecondary = () => {
         fetch("https://api.pexels.com/v1/search?query=car", {
           method: "GET",
           headers: {
