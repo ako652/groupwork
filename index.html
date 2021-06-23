@@ -190,6 +190,22 @@
       <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Album API example</h1>
+          <form class="form-inline my-2 my-lg-0">
+            <input
+              id="search-input"
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-outline-success my-2 my-sm-0"
+              type="submit"
+              onclick="loadFromQuery()"
+            >
+              Search
+            </button>
+          </form>
           <p class="lead text-muted">
             This page will dynamically load pictures from the web, and display
             them in a cool way!
@@ -662,6 +678,25 @@
       const parentCardContianer = document.getElementById(
         "parent-card-container"
       );
+      const loadFromQuery = () => {
+        const searchInput = document.getElementById("search-input");
+        console.log(searchInput.value);
+        fetch("https://api.pexels.com/v1/search?query=" + searchInput.value, {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Bearer 563492ad6f91700001000001af31c8368f96413ab0f9ab1fb349c3b5",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data.photos);
+            displayImage(data.photos);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
       const hideImage = (e) => {
         e.target.closest(".col-md-4").remove();
       };
